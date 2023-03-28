@@ -9,8 +9,8 @@ dotenv.config();
 const server = express();
 
 server.use(cors({
-    origin: 'https://resttesttest.com',
-    methods: 'GET'
+    origin: '',
+    methods: ''
 }));
 
 //criando a pasta publica:

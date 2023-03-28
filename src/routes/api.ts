@@ -1,28 +1,27 @@
 import { Router } from 'express';
 
+import * as apiController from '../controllers/apiController';
+
 const router = Router();
 
 // Endpoint ping pong -> Endpoint de teste.
 
-router.get('/ping', (req, res) => {
-    res.json({pong: true});
-});
+router.get('/ping', apiController.ping);
+router.get('/random', apiController.random);
+router.get('/name', apiController.name);
+router.get('/nome/:nome', apiController.nome);
 
 
-router.get('/random', (req, res) => {
-    let nRand: number = Math.floor(Math.random() * 10);
-    res.json({number: nRand});
-});
+router.post('/frases', apiController.createPhrase);
+router.get('/frases', apiController.listPhrases);
+router.get('/frases/:id', apiController.getPhrases);
+router.put('/frases/:id', apiController.updatePhrases);
+router.delete('/frases/:id', apiController.deletePhrases);
 
-router.get('/name', (req, res) => {
-    let nome: string = 'Diego';
-    res.json({nome : nome});
-});
 
-router.get('/nome/:nome', (req, res) => {
-    let nome: string = req.params.nome;
-    res.json({nome});
-});
+
+
+
 
 
 export default router;
